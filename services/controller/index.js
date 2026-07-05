@@ -43,6 +43,9 @@ app.get('/shipping/:cep', (req, res, next) => {
 });
 
 app.get('/product/:id', (req, res, next) => {
+
+    const productId = parseInt(req.params.id);
+    
     inventory.SearchProductByID({ id: req.params.id }, (err, product) => {
         if (err) {
             console.error(err);
@@ -56,6 +59,7 @@ app.get('/product/:id', (req, res, next) => {
 /**
  * Inicia o router
  */
+
 app.listen(3000, () => {
     console.log('Controller Service running on http://127.0.0.1:3000');
 });
